@@ -1,0 +1,27 @@
+{
+    "id": "2073F6E9",
+    "path": "~/advent-of-code/aoc1.R",
+    "project_path": "aoc1.R",
+    "type": "r_source",
+    "hash": "2248258120",
+    "contents": "",
+    "dirty": false,
+    "created": 1669893980275.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "22,11",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1669895709,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1669895709470,
+    "read_only": false,
+    "read_only_alternatives": []
+}
