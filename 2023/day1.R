@@ -22,6 +22,6 @@ day1_2 <- function(line){
 }
 
 #answer2
-sum(unlist(lapply(test_set, day1_2)))
+sum(unlist(lapply(input, day1_2)))
 
 
