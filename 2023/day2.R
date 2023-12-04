@@ -3,11 +3,11 @@ library(tidyverse)
 input <- readLines("~/advent-of-code/2023/data/day2_input.txt")
 
 day2_parse <- function(input_line){
+  #This reads in the input into tidy format
+  
   step1 <- str_split(input_line, ":")[[1]]
   game_no <- parse_number(step1[1])
-  
   step2 <- str_split(step1[2], ";")[[1]]
-  
   output <- list()
   
   for(each in seq(1,length(step2))){
