@@ -13,25 +13,16 @@ hand_value <- function(hand){
 
 hand_value2 <- function(hand){
   split <- str_split(hand, "")[[1]]
-  counts <- table(split)
   
-  if(("J"%in% names(counts)) & !(names(counts)[which.max(counts)] == "J")){
-    
-    no_joke <- counts[-which(names(counts) == "J")]
-    max_key <- names(no_joke)[which.max(no_joke)]
-    no_joke[max_key] <- no_joke[max_key] + (counts["J"])
-    counts <- no_joke
-  }
-  print(counts)
+  no_joke <- table(split[which(split!="J")]) 
   
-  hand_rank <- sum(13**counts)
+  key <- if(sum(no_joke)>0){no_joke[names(no_joke)[which.max(no_joke)]]} else {key <- c("J"=0)} #get the most-occurring non-Joker
+  
+  hand_rank <- sum(13**table(str_replace(split, names(key), "J"))) #replace the most-occuring card with a "J"
   hand_score <- lapply(split, match, c("J", "2", "3", "4", "5", "6", "7", "8", "9", "T", "Q", "K", "A"))
   
   unlist(c(hand_rank, hand_score))
 }
-
-lapply(x, hand_value2)
-
 
 day7_1 <- function(input){
   data.frame(input) |> 
@@ -63,4 +54,4 @@ day7_2 <- function(input){
     summarise(sum(a))
 }
 
-day7_2(test)
+day7_2(input)
