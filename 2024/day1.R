@@ -1,6 +1,6 @@
-test <- readLines("~/advent-of-code/2024/data/day1_test")
-input <- readLines("~/advent-of-code/2024/data/day1")
-source("~/advent-of-code/utils/timer.R")
+test <- readLines("~/advent-of-code/2024/data/day1_test", warn = FALSE)
+input <- readLines("~/advent-of-code/2024/data/day1", warn = FALSE)
+source("~/advent-of-code/utils/utils.R")
 
 
 day1_1 <- function(input){
