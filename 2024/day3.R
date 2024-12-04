@@ -10,11 +10,12 @@ mul <- function(x,y){
 day3_1 <- function(input){
   
   mulled <- unlist(str_extract_all(input, "mul\\(\\d+,\\d+\\)"))
-  sum(unlist(lapply(mulled, \(x) eval(parse(text = x)))))
+  sum(unlist(lapply(mulled, \(x) eval(parse(text = x))))) #parse the string as a function
 
 }
 
 day3_1(input)
+#165225049
 
 day3_2 <- function(input){
   

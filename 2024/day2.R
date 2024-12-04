@@ -8,7 +8,7 @@ comparer <- function(report){
   
   diffs <- diffs[-length(diffs)]
   
-  if( all(dplyr::between(diffs, 1, 3)) | all(dplyr::between(diffs, -3, -1))){
+  if( all(((diffs >= 1) & (diffs <= 3))) | all(((diffs <= -1) & (diffs >= -3)))){
     TRUE
   } else {
     FALSE
@@ -36,7 +36,7 @@ comparer2 <- function(report){
   
   diffs <- diffs[-length(diffs)]
   
-  if( all(dplyr::between(diffs, 1, 3)) | all(dplyr::between(diffs, -3, -1))){
+  if( all(((diffs >= 1) & (diffs <= 3))) | all(((diffs <= -1) & (diffs >= -3)))){
     TRUE
   } else {
     

@@ -1,3 +1,5 @@
+library(tidyverse)
+
 timer <- function(f){
   start <- Sys.time()
   f
