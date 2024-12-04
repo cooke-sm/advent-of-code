@@ -20,6 +20,7 @@ data |> pivot_longer(cols = c(me,gpt)) |>
   ggplot(aes(x = value, y = fct_rev(day), colour = name))+
   geom_jitter(height = .3, size = .5)+
   scale_colour_manual(values = aoc_colours[4:5], guide = guide_legend(title = NULL))+
+  scale_x_log10()+
   facet_wrap(~part)+
   theme_aoc()+
   xlab("Speed in ms")+
