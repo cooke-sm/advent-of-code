@@ -12,6 +12,12 @@ read_write <- function(day, sample = 100){
   write_csv(data3, "~/advent-of-code/data/me-v-gpt.csv")
 }
 
+d1 <- runner("day1", 20)
+d2 <- runner("day2", 100)
+d3 <- runner("day3", 100)
+d4 <- runner("day4", 100)
+
+data <- bind_rows(d1,d2,d3,d4)
 
 #wips below
 

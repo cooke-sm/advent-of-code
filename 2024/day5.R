@@ -73,7 +73,6 @@ day5_2 <- function(input){
   
   checker <- function(updates){
     
-    
     for(i in seq(length(updates),1)){ #go backwards
       
       must_come_after <- dict[[paste(updates[i])]]
