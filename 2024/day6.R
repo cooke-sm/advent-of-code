@@ -49,6 +49,7 @@ walk_path <- function(mat){
   
   exit <- FALSE
   i <- 0
+  visits <- 0
   
   while(!exit){
     
@@ -58,16 +59,29 @@ walk_path <- function(mat){
     path <- mat[,start_pos[2]]
     
     
+    
     if("#" %in% path[1:start_pos[1]]){
       
       end <- max(which(path[1:start_pos[1]] == "#"))
       
-      if(all(path[(end+1):(start_pos[1]-1)] == "x")){
+      if(all(path[(end+1):(start_pos[1]-1)] == "x")|length(path == 2)){ 
         
-        exit <- TRUE
+        visits <- visits + 1
         
-        return("infinite loop")
+        
+        if(all(path[(end+1):(start_pos[1]-1)] == "x") & (visits > 300)){ 
+          
+          exit <- TRUE
+          
+          return("infinite loop")
+        } else {
+          
+          path[(end+1):start_pos[1]] <- "x"
+          path[(end+1)] <- "^"
+        }
       } else {
+        
+        visits <- 0
         
         path[(end+1):start_pos[1]] <- "x"
         path[(end+1)] <- "^"
@@ -101,17 +115,19 @@ walk_path <- function(mat){
 day6_2 <- function(input){
   
   mat <- do.call(rbind, strsplit(input, ""))
-  exit <- FALSE
+  map <- mat_rotate(mat_rotate(walk_path(mat))) #just don't look at this. Nothing to see here
+  #map <- walk_path(mat)
   
   start_pos <- which(mat == "^", arr.ind = TRUE)
-  locs_visit <- which(walk_path(mat) == "x", arr.ind = TRUE)
+  locs_visit <- which(map == "x", arr.ind = TRUE)
   
-  #locs_visit <- locs_visit[-which(locs_visit[,1] == start_pos[1] & locs_visit[,2] == start_pos[2], arr.ind = TRUE),]
+  locs_visit <- locs_visit[-which(locs_visit[,1] == start_pos[1] & locs_visit[,2] == start_pos[2], arr.ind = TRUE),]
   
   output <- list()
   blocked <- mat
   
   for(loc in seq(1, nrow(locs_visit))){
+
     
     blocked <- mat
     
@@ -121,11 +137,13 @@ day6_2 <- function(input){
     
     blocked[row,col] <- "#"
     
-    output[loc] <- walk_path(blocked)
+    output[[loc]] <- walk_path(blocked)
     
   }
   
   sum(stringr::str_count(unlist(output), "infinite loop"))
+  
+  #table(which(mat == "#") == (which(map == "#"))) # this tests to see if the inital config is the same
 }
 
 
@@ -134,7 +152,8 @@ day6_2(test)
 #6
 
 day6_2(input)
+#1304
 
 
 
-      
+
