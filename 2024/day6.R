@@ -69,7 +69,7 @@ walk_path <- function(mat){
         visits <- visits + 1
         
         
-        if(all(path[(end+1):(start_pos[1]-1)] == "x") & (visits > 300)){ 
+        if(all(path[(end+1):(start_pos[1]-1)] == "x") & (visits > 300)){ #don't judge me
           
           exit <- TRUE
           
